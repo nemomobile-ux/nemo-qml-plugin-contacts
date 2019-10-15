@@ -37,11 +37,13 @@
 #include <QFile>
 #include <QTextStream>
 #include <QTimer>
+#include <QDebug>
 
 // Contacts
 #include <QContactDetailFilter>
 #include <QContactManager>
 #include <QContactSyncTarget>
+#include <QContactDisplayLabel>
 
 // Versit
 #include <QVersitReader>

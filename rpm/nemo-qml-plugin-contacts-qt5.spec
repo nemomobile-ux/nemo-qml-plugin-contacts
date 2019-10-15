@@ -1,7 +1,7 @@
 Name:       nemo-qml-plugin-contacts-qt5
 
 Summary:    Nemo QML contacts plugin
-Version:    0.2.16
+Version:    0.3
 Release:    1
 Group:      System/Libraries
 License:    BSD
@@ -10,7 +10,6 @@ Source0:    %{name}-%{version}.tar.bz2
 Requires:   qtcontacts-sqlite-qt5 >= 0.1.37
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Contacts)
 BuildRequires:  pkgconfig(Qt5Versit)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(qtcontacts-sqlite-qt5-extensions) >= 0.2.31
@@ -19,13 +18,17 @@ BuildRequires:  pkgconfig(mlocale5)
 BuildRequires:  pkgconfig(mlite5)
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  qt5-qttools
+#Because pkgconfig QtContacts always return 5.0.0 use packages version
+BuildRequires:  qt5-qtpim-contacts-devel >= 5.8
+Requires: qt5-qtpim-contacts >= 5.8
+
 
 %description
 %{summary}.
 
 %package ts-devel
 Summary:   Translation source for nemo-qml-plugin-contacts-qt5
-Group:     System/Libraries
+Group:     Development/Languages
 
 %description ts-devel
 Translation source for nemo-qml-plugin-contacts-qt5

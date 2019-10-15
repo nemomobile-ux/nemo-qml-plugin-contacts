@@ -64,6 +64,8 @@
 #include <QContactTimestamp>
 #include <QContactUrl>
 
+#include <QDebug>
+
 QTCONTACTS_USE_NAMESPACE
 
 namespace {
@@ -193,11 +195,11 @@ QString displayLabel(const QContact &contact)
 
 void getRelatedContacts(const QContact &contact, QSet<quint32> *constituents, QSet<quint32> *aggregates)
 {
-    const quint32 id(numericId(contact));
+    const quint32 id(contact.id().localId().toInt());
 
     foreach (const QContactRelationship &relationship, contact.relationships(QString::fromLatin1("Aggregates"))) {
-        const quint32 firstId(numericId(relationship.first()));
-        const quint32 secondId(numericId(relationship.second()));
+        const quint32 firstId(relationship.first().localId().toInt());
+        const quint32 secondId(relationship.second().localId().toInt());
         if ((firstId == id) && constituents) {
             constituents->insert(secondId);
         } else if ((secondId == id) && aggregates) {
